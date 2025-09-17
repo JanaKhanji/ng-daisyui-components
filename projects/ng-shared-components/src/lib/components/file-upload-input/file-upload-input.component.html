@@ -1,0 +1,151 @@
+<div
+  class="w-full"
+  dndDropzone
+>
+  @if (!uploadedFiles || uploadedFiles.length === 0) {
+    <label
+      for="inputFile"
+      class="hover:border-primary-300 flex w-full cursor-pointer appearance-none items-center justify-center rounded-md border-2 border-dashed border-gray-200 p-6"
+    >
+      <div
+        class="mx-2 inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-100"
+      >
+        <i class="fa-solid fa-cloud-arrow-up text-2xl"></i>
+      </div>
+      <div class="space-y-1 text-start">
+        <div class="text-gray-600 text-sm">
+          Click
+          <button
+            type="button"
+            [disabled]="disabled"
+            (click)="inputFile.click()"
+            class="text-primary-500 hover:text-primary-700 link"
+          >
+            here
+          </button>
+          to upload a new file or drag and drop
+        </div>
+        <p class="text-sm text-gray-500">
+          Pdf, Images or Docx files are acceptable
+        </p>
+      </div>
+    </label>
+  } @else {
+    @if (multiple) {
+      <div
+        class="grid grid-cols-3 gap-4 hover:border-primary-300 w-full rounded-md border-2 border-dashed border-gray-200 p-6"
+      >
+        <div
+          class="hover:border-primary-300 flex-col gap-2 flex cursor-pointer appearance-none items-center justify-center rounded-md border border-gray-200 p-6"
+        >
+          <div
+            class="mx-auto inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-100"
+          >
+            <i class="fa-solid fa-cloud-arrow-up text-2xl"></i>
+          </div>
+          <div class="text-gray-600 text-center">
+            <button
+              type="button"
+              [disabled]="disabled"
+              (click)="inputFile.click()"
+              class="text-primary-500 hover:text-primary-700 link font-medium"
+            >
+              Click to upload more
+            </button>
+            or drag and drop here
+          </div>
+        </div>
+        @for (file of uploadedFiles; track $index; let i = $index) {
+          @if (file.error) {
+            <div
+              class="h-full w-full flex flex-col justify-center items-center border border-gray-200 gap-2 p-6"
+            >
+              <div
+                class="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-100"
+              >
+                <i
+                  class="fa-solid fa-file-circle-exclamation text-2xl text-error"
+                ></i>
+              </div>
+              <p class="text-error text-center">
+                Uploaded file is not the right type
+              </p>
+            </div>
+          } @else {
+            <div class="indicator w-full h-full">
+              <div class="indicator-item">
+                <!-- <button
+                  class="btn btn-sm btn-circle btn-error no-animation"
+                  (click)="removeItem(i)"
+                  [disabled]="disabled"
+                >
+                  <i class="fa-solid fa-x"></i>
+                </button> -->
+              </div>
+
+              <div
+                class="h-full w-full flex flex-col justify-center items-center border border-gray-200 gap-2 p-6"
+              >
+                <div
+                  class="mx-auto inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-100"
+                >
+                  <i class="fa-solid fa-file-circle-check text-2xl"></i>
+                </div>
+                <p class="text-center">{{ file.name }}</p>
+              </div>
+            </div>
+          }
+        }
+      </div>
+    } @else {
+      <label
+        for="inputFile"
+        class="hover:border-primary-300 flex w-full cursor-pointer appearance-none items-center justify-center rounded-md border-2 border-dashed border-gray-200 p-6 transition-all"
+      >
+        <div class="space-y-1 text-center">
+          @if (uploadedFiles[0].error) {
+            <div
+              class="mx-auto inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-100"
+            >
+              <i class="fa-solid fa-file-circle-exclamation text-2xl"></i>
+            </div>
+            <p class="text-error text-center">
+              Uploaded file is not the right type
+            </p>
+          } @else {
+            <div
+              class="mx-auto inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-100"
+            >
+              <i class="fa-solid fa-file-circle-check text-2xl"></i>
+            </div>
+            <div class="text-center">File: {{ uploadedFiles[0].name }}</div>
+          }
+          <div class="text-gray-600 text-sm">
+            Click
+            <button
+              type="button"
+              [disabled]="disabled"
+              (click)="inputFile.click()"
+              class="text-primary-500 hover:text-primary-700 link"
+            >
+              here
+            </button>
+            to upload a new file or drag and drop
+          </div>
+          <p class="text-sm text-gray-500">
+            Pdf, Images or Docx files are acceptable
+          </p>
+        </div>
+      </label>
+    }
+  }
+</div>
+
+<input
+  class="hidden"
+  [accept]="allowedMimeTypes.join(', ')"
+  [multiple]="multiple"
+  type="file"
+  id="inputFile"
+  #inputFile
+/>

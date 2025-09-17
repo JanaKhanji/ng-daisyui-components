@@ -1,0 +1,63 @@
+
+@if (count > pageSize) {
+  <div class="flex w-full items-center py-3">
+    <div class="join">
+      <button
+        id="previousPageButton"
+        class="btn join-item bg-base-100"
+        [disabled]="page === 1"
+        (click)="selectPage(page - 1)"
+      >
+      <svg class="stroke-current" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier"> 
+          <path d="M15 6L9 12L15 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> 
+        </g>
+      </svg>
+      </button>
+      @for (p of totalPages; track i; let i = $index) {
+        @if (
+          (i + 1 >= page - maxNumberOfButtons &&
+            i + 1 <= page + maxNumberOfButtons) ||
+          i + 1 === totalPages.length ||
+          i === 0
+        ) {
+          @if (
+            ((i + 1 <= totalPages.length + maxNumberOfButtons &&
+              i + 1 <= page - maxNumberOfButtons &&
+              i !== 1) ||
+              (i + 1 === totalPages.length &&
+                page < totalPages.length - maxNumberOfButtons - 1)) &&
+            i !== 0
+          ) {
+            <button
+              class="btn join-item cursor-default bg-base-100 hover:bg-base-100"
+            >
+              ...
+            </button>
+          }
+          <button
+            (click)="selectPage(i + 1)"
+            class="btn join-item"
+            [class]="page === i + 1 ? 'bg-primary text-primary-content' : 'bg-base-100'"
+          >
+            {{ i + 1 }}
+          </button>
+        }
+      }
+      <button
+        id="nextPageButton"
+        class="btn join-item bg-base-100"
+        [disabled]="lastPage"
+        (click)="selectPage(page + 1)"
+      >
+        <svg class="stroke-current" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+            <path d="M9 6L15 12L9 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+      </button>
+    </div>
+</div>
+}

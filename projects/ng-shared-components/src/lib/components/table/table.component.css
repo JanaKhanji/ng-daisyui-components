@@ -1,0 +1,7 @@
+.table {
+  @apply border-collapse border-spacing-0 w-full;
+}
+
+thead th {
+  @apply bg-gray-100 font-bold p-4 text-left;
+}

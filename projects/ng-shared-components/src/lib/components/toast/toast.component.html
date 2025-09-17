@@ -1,0 +1,65 @@
+@if (displayToast) {
+  <div
+    [className]="
+      'fixed bottom-5 z-[1002] right-5 top-auto left-auto max-w-[300px] min-w-[300px] transition-opacity duration-300 rounded-lg border border-secondary-50 bg-white p-4 text-sm shadow-lg ' +
+      opacityClass
+    "
+  >
+    <button
+      (click)="toastService.hideNotification()"
+      class="absolute right-4 top-4 ml-auto"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="flex space-x-4">
+      @switch (toastInfo.toastClass) {
+        @case ("SUCCESS") {
+          <span class="fa-stack fa-xl">
+            <i class="fas fa-circle fa-stack-2x text-success opacity-10"></i>
+            <i class="fa-solid fa-circle-check fa-stack-1x text-success"></i>
+          </span>
+        }
+        @case ("INFO") {
+          <span class="fa-stack fa-xl">
+            <i class="fas fa-circle fa-stack-2x text-info opacity-10"></i>
+            <i class="fa-solid fa-circle-info fa-stack-1x text-info"></i>
+          </span>
+        }
+        @case ("WARNING") {
+          <span class="fa-stack fa-xl">
+            <i class="fas fa-circle fa-stack-2x text-warning opacity-10"></i>
+            <i
+              class="fa-solid fa-triangle-exclamation fa-stack-1x text-warning"
+            ></i>
+          </span>
+        }
+        @case ("ERROR") {
+          <span class="fa-stack fa-xl">
+            <i class="fas fa-circle fa-stack-2x text-error opacity-10"></i>
+            <i class="fa-solid fa-circle-xmark fa-stack-1x text-error"></i>
+          </span>
+        }
+      }
+      <div class="flex-1">
+        @if (toastInfo.title) {
+          <p class="pr-6 text-base font-semibold">{{ toastInfo.title }}</p>
+        }
+        <div class="mt-1 text-gray-600">
+          @if (isString) {
+            <span>{{ toastInfo.message }}</span>
+          } @else {
+            <ng-template [ngTemplateOutlet]="template" />
+          }
+        </div>
+        <div class="mt-2 flex space-x-4">
+          <button
+            class="inline-block font-medium leading-loose text-primary transition-colors duration-100 hover:text-secondary"
+            (click)="toastService.hideNotification()"
+          >
+            Dismiss
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

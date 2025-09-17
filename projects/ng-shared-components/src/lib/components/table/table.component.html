@@ -1,0 +1,71 @@
+<div class="overflow-x-auto" [ngClass]="customClass">
+  <table class="table table-pin-rows">
+    <thead>
+      <tr>
+        <th
+          *ngFor="let column of columns"
+          class="cursor-pointer"
+          [style.width.px]="column.width"
+          [style.minWidth.px]="column.minWidth"
+          (click)="sortData(column)"
+        >
+          {{ column.header }}
+          @if (column.isSortable) {
+          <button class="btn btn-ghost btn-sm">
+            @if (column.sort === sortDirectionEnum.ASC) {
+              <div class="bottom-1 relative">
+                <svg class="stroke-current" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 15L12 9L18 15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+              </div>
+            } @else if (column.sort === sortDirectionEnum.DESC) {
+              <div class="top-1 relative">
+                <svg class="stroke-current" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+              </div>
+            } @else {
+            <svg class="stroke-current" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M7 15L12 20L17 15M7 9L12 4L17 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            }
+
+          </button>
+          }
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="let row of dataSource"
+        class="hover:bg-base-200 bg-base-100 cursor-pointer"
+        (click)="handleRowClick(row)"
+      >
+        <td
+          *ngFor="let column of columns"
+          [style.width.px]="column.width"
+          [style.minWidth.px]="column.minWidth"
+          (click)="
+            column.onClick ? $event.stopPropagation() : null;
+            column.onClick?.(row)
+          "
+        >
+          <ng-container *ngIf="isTemplate(column.cell(row)); else textCell">
+            <ng-container
+              *ngTemplateOutlet="
+                getTemplate(column, row);
+                context: { $implicit: row }
+              "
+            ></ng-container>
+          </ng-container>
+          <ng-template #textCell>{{ column.cell(row) }}</ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+@if (count > pageSize) {
+<div class="flex w-full justify-end mb-3">
+  <app-pagination
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [count]="count"
+    (pageChange)="pageChange.emit(page)"
+  ></app-pagination>
+</div>
+}
