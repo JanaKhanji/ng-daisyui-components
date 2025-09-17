@@ -6,8 +6,8 @@
     "outDir": "../../out-tsc/app",
     "types": [],
     "paths": {
-      "ng-shared-components": ["../ng-shared-components/src/public-api.ts"],
-      "ng-shared-components/*": ["../ng-shared-components/src/lib/*"]
+      "ng-daisy-ui-components": ["../ng-daisy-ui-components/src/public-api.ts"],
+      "ng-daisy-ui-components/*": ["../ng-daisy-ui-components/src/lib/*"]
     }
   },
   "files": [
@@ -15,7 +15,7 @@
   ],
   "include": [
     "src/**/*.d.ts",
-    "../ng-shared-components/src/**/*"
+    "../ng-daisy-ui-components/src/**/*"
   ],
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

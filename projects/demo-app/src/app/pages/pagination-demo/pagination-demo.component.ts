@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PaginationComponent } from 'ng-shared-components';
+import { PaginationComponent } from 'ng-daisy-ui-components';
 
 @Component({
   selector: 'app-pagination-demo',

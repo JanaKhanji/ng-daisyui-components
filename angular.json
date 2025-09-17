@@ -95,23 +95,23 @@
         }
       }
     },
-    "ng-shared-components": {
+    "ng-daisy-ui-components": {
       "projectType": "library",
-      "root": "projects/ng-shared-components",
-      "sourceRoot": "projects/ng-shared-components/src",
+      "root": "projects/ng-daisy-ui-components",
+      "sourceRoot": "projects/ng-daisy-ui-components/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ng-shared-components/ng-package.json"
+            "project": "projects/ng-daisy-ui-components/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-shared-components/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ng-daisy-ui-components/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ng-shared-components/tsconfig.lib.json"
+              "tsConfig": "projects/ng-daisy-ui-components/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -119,12 +119,12 @@
         "watch": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ng-shared-components/ng-package.json",
+            "project": "projects/ng-daisy-ui-components/ng-package.json",
             "watch": true
           },
           "configurations": {
             "development": {
-              "tsConfig": "projects/ng-shared-components/tsconfig.lib.json"
+              "tsConfig": "projects/ng-daisy-ui-components/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "development"
@@ -132,7 +132,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ng-shared-components/tsconfig.spec.json",
+            "tsConfig": "projects/ng-daisy-ui-components/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

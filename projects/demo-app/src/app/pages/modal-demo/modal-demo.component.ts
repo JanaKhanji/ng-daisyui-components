@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalExampleComponent } from './modal-example.component';
 import { ModalScrollableExampleComponent } from './modal-scrollable-example.component';
-import { ModalService, ToastService, ModalSize } from 'ng-shared-components';
+import { ModalService, ToastService, ModalSize } from 'ng-daisy-ui-components';
 import { ModalResultsComponent } from './modal-results.component';
 
 @Component({

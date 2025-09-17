@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent, ToastService } from 'ng-shared-components';
+import { CardComponent, ToastService } from 'ng-daisy-ui-components';
 
 @Component({
   selector: 'app-card-demo',

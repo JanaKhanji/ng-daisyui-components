@@ -1,15 +1,15 @@
 {
-  "name": "ng-shared-components-library",
+  "name": "ng-daisy-ui-components",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "start:demo": "ng serve demo-app",
     "start:demo:dev": "ng serve demo-app --configuration dev-with-lib",
-    "start:lib": "ng build ng-shared-components --watch --configuration development",
+    "start:lib": "ng build ng-daisy-ui-components --watch --configuration development",
     "dev": "concurrently \"npm run start:lib\" \"npm run start:demo\"",
     "build": "ng build",
-    "build:lib": "ng build ng-shared-components",
+    "build:lib": "ng build ng-daisy-ui-components",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

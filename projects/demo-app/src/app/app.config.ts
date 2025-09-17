@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { ThemeService } from './service/theme.service';
-import { GlobalDrawerConfig, GlobalModalConfig, ModalSize } from 'ng-shared-components';
+import { GlobalDrawerConfig, GlobalModalConfig, ModalSize } from 'ng-daisy-ui-components';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LoadingStateComponent } from 'ng-shared-components';
+import { LoadingStateComponent } from 'ng-daisy-ui-components';
 
 @Component({
   selector: 'app-loading-state-demo',

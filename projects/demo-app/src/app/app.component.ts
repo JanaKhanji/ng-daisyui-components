@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
-import { ToastComponent } from 'ng-shared-components';
+import { ToastComponent } from 'ng-daisy-ui-components';
 
 @Component({
   selector: 'app-root',

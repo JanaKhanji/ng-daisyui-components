@@ -12,8 +12,8 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "paths": {
-      "ng-shared-components": [
-        "./dist/ng-shared-components"
+      "ng-daisy-ui-components": [
+        "./dist/ng-daisy-ui-components"
       ]
     },
     "esModuleInterop": true,

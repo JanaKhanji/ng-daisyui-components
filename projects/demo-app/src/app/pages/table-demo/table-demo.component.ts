@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableComponent, Column, ToastService } from 'ng-shared-components';
+import { TableComponent, Column, ToastService } from 'ng-daisy-ui-components';
 
 interface User {
   id: number;

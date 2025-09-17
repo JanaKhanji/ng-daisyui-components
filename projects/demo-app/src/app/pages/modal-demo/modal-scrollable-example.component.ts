@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ModalComponent, ModalRef } from 'ng-shared-components';
+import { ModalComponent, ModalRef } from 'ng-daisy-ui-components';
 
 @Component({
   selector: 'app-modal-scrollable-example',

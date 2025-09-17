@@ -1,7 +1,7 @@
   import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ModalRef } from 'ng-shared-components';
-import { ModalComponent } from 'ng-shared-components';
+import { ModalRef } from 'ng-daisy-ui-components';
+import { ModalComponent } from 'ng-daisy-ui-components';
 
 @Component({
   selector: 'app-modal-results',
