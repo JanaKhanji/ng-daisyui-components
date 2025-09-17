@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DrawerLayoutComponent, DrawerService, ToastService } from 'ng-daisy-ui-components';
+import { DrawerLayoutComponent, DrawerService } from 'ng-daisy-ui-components';
 
 @Component({
-  selector: 'app-card-demo',
+  selector: 'app-drawer-demo',
   standalone: true,
   imports: [CommonModule, DrawerLayoutComponent],
   template: `
@@ -12,7 +12,9 @@ import { DrawerLayoutComponent, DrawerService, ToastService } from 'ng-daisy-ui-
       <ng-drawer drawerSide="drawer-start">
         <ng-container page-content>
           <p>Page content</p>
-          <button class="btn btn-primary" (click)="openDrawer()">Open Drawer</button>
+          <button class="btn btn-primary" (click)="openDrawer()">
+            Open Drawer
+          </button>
         </ng-container>
         <ng-container drawer-content>
           <p>Drawer content</p>
@@ -20,7 +22,7 @@ import { DrawerLayoutComponent, DrawerService, ToastService } from 'ng-daisy-ui-
       </ng-drawer>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class DrawerDemoComponent {
   constructor(private drawerService: DrawerService) {}
@@ -28,4 +30,4 @@ export class DrawerDemoComponent {
   openDrawer() {
     this.drawerService.open();
   }
-} 
+}

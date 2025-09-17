@@ -6,9 +6,15 @@ import { ToastComponent } from 'ng-daisy-ui-components';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ThemeSwitcherComponent, RouterLink, RouterLinkActive, ToastComponent],
+  imports: [
+    RouterOutlet,
+    ThemeSwitcherComponent,
+    RouterLink,
+    RouterLinkActive,
+    ToastComponent,
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'demo-app';
