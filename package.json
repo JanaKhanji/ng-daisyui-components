@@ -20,7 +20,9 @@
   },
   "lint-staged": {
     "projects/**/*.{ts,html,css,scss,json}": [
-      "prettier --write",
+      "prettier --write"
+    ],
+    "projects/**/*.ts": [
       "eslint --fix"
     ]
   },
