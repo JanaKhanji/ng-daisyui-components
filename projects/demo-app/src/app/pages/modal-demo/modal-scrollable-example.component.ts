@@ -13,7 +13,9 @@ import { ModalComponent, ModalRef } from 'ng-daisy-ui-components';
       </ng-container>
       <ng-container body>
         <div class="flex flex-col">
-          <p *ngFor="let item of [].constructor(50); trackBy: trackByIndex">{{ ref.data.body }}</p>
+          <p *ngFor="let item of [].constructor(50); trackBy: trackByIndex">
+            {{ ref.data.body }}
+          </p>
         </div>
       </ng-container>
       <ng-container footer>

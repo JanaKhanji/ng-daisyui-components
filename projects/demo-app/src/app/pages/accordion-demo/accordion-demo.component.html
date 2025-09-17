@@ -1,13 +1,16 @@
 <div class="container mx-auto p-8">
   <h1 class="text-4xl font-bold mb-8 text-center">Accordion Component Demo</h1>
-  
+
   <div class="mb-8">
     <h2 class="text-2xl font-semibold mb-4">Basic Accordion</h2>
     <div class="flex flex-col space-y-4">
       <ng-accordion>
         <div title>What is Angular?</div>
         <div content>
-          <p class="mb-3">Angular is a platform and framework for building single-page client applications using HTML and TypeScript.</p>
+          <p class="mb-3">
+            Angular is a platform and framework for building single-page client
+            applications using HTML and TypeScript.
+          </p>
           <p class="mb-3">Key features include:</p>
           <ul class="list-disc list-inside ml-4">
             <li>Component-based architecture</li>
@@ -32,10 +35,14 @@
         </div>
       </ng-accordion>
 
-      <ng-accordion customClass="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+      <ng-accordion
+        customClass="bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+      >
         <div title>Best practices</div>
         <div content>
-          <p class="mb-3">Follow these best practices for Angular development:</p>
+          <p class="mb-3">
+            Follow these best practices for Angular development:
+          </p>
           <ul class="list-disc list-inside ml-4">
             <li>Use TypeScript for type safety</li>
             <li>Follow the Angular style guide</li>
@@ -48,5 +55,3 @@
     </div>
   </div>
 </div>
-
-

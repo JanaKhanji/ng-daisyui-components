@@ -10,14 +10,14 @@ import { TableDemoComponent } from './pages/table-demo/table-demo.component';
 import { DrawerDemoComponent } from './pages/drawer-demo/drawer-demo.component';
 
 export const routes: Routes = [
-    { path: 'card', component: CardDemoComponent },
-    { path: 'accordion', component: AccordionDemoComponent },
-    { path: 'empty-state', component: EmptyStateDemoComponent },
-    { path: 'loading-state', component: LoadingStateDemoComponent },
-    { path: 'modal', component: ModalDemoComponent },   
-    { path: 'pagination', component: PaginationDemoComponent },
-    { path: 'search', component: SearchDemoComponent },
-    { path: 'table', component: TableDemoComponent },
-    { path: 'drawer', component: DrawerDemoComponent },
-    { path: '', redirectTo: '/card', pathMatch: 'full' }
+  { path: 'card', component: CardDemoComponent },
+  { path: 'accordion', component: AccordionDemoComponent },
+  { path: 'empty-state', component: EmptyStateDemoComponent },
+  { path: 'loading-state', component: LoadingStateDemoComponent },
+  { path: 'modal', component: ModalDemoComponent },
+  { path: 'pagination', component: PaginationDemoComponent },
+  { path: 'search', component: SearchDemoComponent },
+  { path: 'table', component: TableDemoComponent },
+  { path: 'drawer', component: DrawerDemoComponent },
+  { path: '', redirectTo: '/card', pathMatch: 'full' },
 ];

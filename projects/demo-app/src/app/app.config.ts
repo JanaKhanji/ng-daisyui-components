@@ -1,18 +1,27 @@
-import { APP_INITIALIZER, ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  ApplicationConfig,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { ThemeService } from './service/theme.service';
-import { GlobalDrawerConfig, GlobalModalConfig, ModalSize } from 'ng-daisy-ui-components';
+import {
+  GlobalDrawerConfig,
+  GlobalModalConfig,
+  ModalSize,
+} from 'ng-daisy-ui-components';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     {
       provide: APP_INITIALIZER,
       multi: true,
       useFactory: (theme: ThemeService) => () => theme.init(),
-      deps: [ThemeService]
+      deps: [ThemeService],
     },
     {
       provide: GlobalDrawerConfig,
@@ -21,17 +30,16 @@ export const appConfig: ApplicationConfig = {
         allowBackdropClick: true,
         allowCloseOnEscape: false,
         drawerSide: 'end',
-        hideCloseButton: false
-      }
+        hideCloseButton: false,
+      },
     },
     {
       provide: GlobalModalConfig,
       useValue: {
         allowCloseOnBackdropClick: false,
         allowCloseOnEscape: false,
-        modalSize: ModalSize.LG
-      }
-    }
-  
-  ]
+        modalSize: ModalSize.LG,
+      },
+    },
+  ],
 };

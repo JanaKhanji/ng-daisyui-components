@@ -5,17 +5,31 @@ const STORAGE_KEY = 'app-theme';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-    constructor(@Inject(DOCUMENT) private doc: Document) {}
+  constructor(@Inject(DOCUMENT) private doc: Document) {}
 
-  availableThemes = ['light', 'dark', 'cupcake', 'bumblebee', 'customtheme', 'emerald' , 'custombubble'];
+  availableThemes = [
+    'light',
+    'dark',
+    'cupcake',
+    'bumblebee',
+    'customtheme',
+    'emerald',
+    'custombubble',
+  ];
 
   get current(): string {
-    return this.doc.documentElement.getAttribute('data-theme') || this.availableThemes[0];
+    return (
+      this.doc.documentElement.getAttribute('data-theme') ||
+      this.availableThemes[0]
+    );
   }
 
   init() {
     const saved = localStorage.getItem(STORAGE_KEY);
-    const theme = saved && this.availableThemes.includes(saved) ? saved : this.availableThemes[0];
+    const theme =
+      saved && this.availableThemes.includes(saved)
+        ? saved
+        : this.availableThemes[0];
     this.apply(theme);
   }
 

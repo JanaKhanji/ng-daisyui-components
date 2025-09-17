@@ -41,7 +41,7 @@ export class TableComponent<T> {
       }
 
       // Set all other columns to sort = null
-      this.columns.forEach((col) => {
+      this.columns.forEach(col => {
         if (col !== column) {
           col.sort = null;
         }

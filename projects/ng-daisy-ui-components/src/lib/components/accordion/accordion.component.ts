@@ -6,19 +6,23 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-      <div class="collapse collapse-arrow bg-base-100 border border-base-300" [class]="customClass">
-        <input type="checkbox" [checked]="isOpen" (change)="toggleAccordion()" />
-        <div class="collapse-title font-semibold">
+    <div
+      class="collapse collapse-arrow bg-base-100 border border-base-300"
+      [class]="customClass"
+    >
+      <input type="checkbox" [checked]="isOpen" (change)="toggleAccordion()" />
+      <div class="collapse-title font-semibold">
         <ng-content select="[title]"></ng-content>
-
-        </div>
-        <div class="collapse-content" [class]="isOpen ? 'min-h-fit pb-4 visible' : ''">
-        <ng-content select="[content]"></ng-content>
-        </div>
       </div>
-      
+      <div
+        class="collapse-content"
+        [class]="isOpen ? 'min-h-fit pb-4 visible' : ''"
+      >
+        <ng-content select="[content]"></ng-content>
+      </div>
+    </div>
   `,
-  styles: []
+  styles: [],
 })
 export class AccordionComponent {
   @Input() customClass?: string = '';

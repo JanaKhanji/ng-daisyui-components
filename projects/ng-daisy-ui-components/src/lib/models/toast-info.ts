@@ -10,7 +10,7 @@ export class ToastInfo {
     message: string | TemplateRef<string>,
     title: string,
     toastClass: 'SUCCESS' | 'INFO' | 'WARNING' | 'ERROR' = 'INFO',
-    timesOut = true,
+    timesOut = true
   ) {
     this.message = message;
     this.title = title;

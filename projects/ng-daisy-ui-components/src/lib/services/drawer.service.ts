@@ -9,7 +9,9 @@ export interface GlobalDrawerConfig {
   hideCloseButton?: boolean;
 }
 
-export const GlobalDrawerConfig = new InjectionToken<GlobalDrawerConfig>('GlobalDrawerConfig');
+export const GLOBAL_DRAWER_CONFIG = new InjectionToken<GlobalDrawerConfig>(
+  'GlobalDrawerConfig'
+);
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +24,16 @@ export class DrawerService {
   private drawerSide: 'end' | 'start' = 'end';
   private hideCloseButton: boolean = false;
   private currentConfig: GlobalDrawerConfig | undefined = undefined;
-  constructor(@Inject(GlobalDrawerConfig) private config: GlobalDrawerConfig = {
-    drawerWidth: 'w-9/12',
-    allowBackdropClick: true,
-    allowCloseOnEscape: true,
-    drawerSide: 'end',
-    hideCloseButton: false  
-  }) {
+  constructor(
+    @Inject(GLOBAL_DRAWER_CONFIG)
+    private config: GlobalDrawerConfig = {
+      drawerWidth: 'w-9/12',
+      allowBackdropClick: true,
+      allowCloseOnEscape: true,
+      drawerSide: 'end',
+      hideCloseButton: false,
+    }
+  ) {
     this.drawerWidth = this.config.drawerWidth || 'w-9/12';
     this.allowBackdropClick = this.config.allowBackdropClick || true;
     this.allowCloseOnEscape = this.config.allowCloseOnEscape || true;
@@ -50,7 +55,6 @@ export class DrawerService {
         }
       };
       document.addEventListener('keydown', onKeyDown);
-
     }
   }
 

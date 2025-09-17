@@ -22,11 +22,14 @@ export interface ModalConfig<TData> {
   modalSize?: ModalSize;
 }
 
-export class ModalRef<TData = any, TResult = any> {
+export class ModalRef<TData = unknown, TResult = unknown> {
   private readonly closed$ = new Subject<TResult | boolean>();
   afterClosed$: Observable<TResult | boolean> = this.closed$.asObservable();
 
-  constructor(public data: TData, public config: ModalConfig<TData>) {}
+  constructor(
+    public data: TData,
+    public config: ModalConfig<TData>
+  ) {}
 
   close(result?: TResult) {
     this.closed$.next(result as TResult);

@@ -10,13 +10,8 @@
       "ng-daisy-ui-components/*": ["../ng-daisy-ui-components/src/lib/*"]
     }
   },
-  "files": [
-    "src/main.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts",
-    "../ng-daisy-ui-components/src/**/*"
-  ],
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.d.ts", "../ng-daisy-ui-components/src/**/*"],
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,

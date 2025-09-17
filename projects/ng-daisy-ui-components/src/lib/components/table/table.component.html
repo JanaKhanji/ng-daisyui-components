@@ -11,20 +11,85 @@
         >
           {{ column.header }}
           @if (column.isSortable) {
-          <button class="btn btn-ghost btn-sm">
-            @if (column.sort === sortDirectionEnum.ASC) {
-              <div class="bottom-1 relative">
-                <svg class="stroke-current" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 15L12 9L18 15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-              </div>
-            } @else if (column.sort === sortDirectionEnum.DESC) {
-              <div class="top-1 relative">
-                <svg class="stroke-current" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 9L12 15L18 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-              </div>
-            } @else {
-            <svg class="stroke-current" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M7 15L12 20L17 15M7 9L12 4L17 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-            }
-
-          </button>
+            <button class="btn btn-ghost btn-sm">
+              @if (column.sort === sortDirectionEnum.ASC) {
+                <div class="bottom-1 relative">
+                  <svg
+                    class="stroke-current"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        d="M6 15L12 9L18 15"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </g>
+                  </svg>
+                </div>
+              } @else if (column.sort === sortDirectionEnum.DESC) {
+                <div class="top-1 relative">
+                  <svg
+                    class="stroke-current"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        d="M6 9L12 15L18 9"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </g>
+                  </svg>
+                </div>
+              } @else {
+                <svg
+                  class="stroke-current"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M7 15L12 20L17 15M7 9L12 4L17 9"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+              }
+            </button>
           }
         </th>
       </tr>
@@ -60,12 +125,12 @@
   </table>
 </div>
 @if (count > pageSize) {
-<div class="flex w-full justify-end mb-3">
-  <app-pagination
-    [(page)]="page"
-    [pageSize]="pageSize"
-    [count]="count"
-    (pageChange)="pageChange.emit(page)"
-  ></app-pagination>
-</div>
+  <div class="flex w-full justify-end mb-3">
+    <app-pagination
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [count]="count"
+      (pageChange)="pageChange.emit(page)"
+    ></app-pagination>
+  </div>
 }

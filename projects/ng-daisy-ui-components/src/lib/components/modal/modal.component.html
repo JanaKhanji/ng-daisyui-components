@@ -1,5 +1,9 @@
 <div class="modal-backdrop" (click)="modalService.onBackdropClick()">
-  <div class="modal-container" (click)="$event.stopPropagation()" [ngClass]="modalSize + ' w-full'">
+  <div
+    class="modal-container"
+    (click)="$event.stopPropagation()"
+    [ngClass]="modalSize + ' w-full'"
+  >
     <div class="modal-header">
       <ng-content select="[header]"></ng-content>
     </div>

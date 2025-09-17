@@ -17,7 +17,7 @@ export class ToastComponent {
   opacityClass = 'opacity-0';
 
   constructor(public toastService: ToastService) {
-    this.toastService.getDisplayToastSubject().subscribe((shouldDisplay) => {
+    this.toastService.getDisplayToastSubject().subscribe(shouldDisplay => {
       if (shouldDisplay) {
         this.displayToast = shouldDisplay;
         this.opacityClass = 'opacity-100';

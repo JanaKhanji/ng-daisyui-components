@@ -7,7 +7,6 @@ import { AccordionComponent } from '../../../../../ng-daisy-ui-components/src/li
   standalone: true,
   imports: [CommonModule, AccordionComponent],
   templateUrl: './accordion-demo.component.html',
-  styles: []
+  styles: [],
 })
-export class AccordionDemoComponent {
-} 
+export class AccordionDemoComponent {}

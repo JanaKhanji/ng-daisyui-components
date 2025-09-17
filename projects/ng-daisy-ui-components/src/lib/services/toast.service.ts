@@ -34,7 +34,7 @@ export class ToastService {
   showSuccess(
     title: string,
     message: string | TemplateRef<string> = '',
-    timesOut = true,
+    timesOut = true
   ): void {
     this.showToast(new ToastInfo(message, title, 'SUCCESS', timesOut));
   }
@@ -42,7 +42,7 @@ export class ToastService {
   showError(
     title: string,
     message: string | TemplateRef<string> = '',
-    timesOut = true,
+    timesOut = true
   ): void {
     this.showToast(new ToastInfo(message, title, 'ERROR', timesOut));
   }
@@ -50,7 +50,7 @@ export class ToastService {
   showInfo(
     title: string,
     message: string | TemplateRef<string> = '',
-    timesOut = true,
+    timesOut = true
   ): void {
     this.showToast(new ToastInfo(message, title, 'INFO', timesOut));
   }
@@ -58,7 +58,7 @@ export class ToastService {
   showWarning(
     title: string,
     message: string | TemplateRef<string> = '',
-    timesOut = true,
+    timesOut = true
   ): void {
     this.showToast(new ToastInfo(message, title, 'WARNING', timesOut));
   }

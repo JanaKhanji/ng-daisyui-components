@@ -9,54 +9,45 @@ import { PaginationComponent } from 'ng-daisy-ui-components';
   imports: [CommonModule, FormsModule, PaginationComponent],
   template: `
     <div class="container mx-auto p-8">
-      <h1 class="text-4xl font-bold mb-8 text-center">Pagination Component Demo</h1>
-      
+      <h1 class="text-4xl font-bold mb-8 text-center">
+        Pagination Component Demo
+      </h1>
+
       <!-- Controls Section -->
       <div class="mb-8 p-6">
         <h2 class="text-2xl font-semibold mb-4">Controls</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-sm font-medium mb-2">Total Items</label>
-            <input 
-              type="number" 
-              [(ngModel)]="count" 
-              min="1" 
+            <input
+              type="number"
+              [(ngModel)]="count"
+              min="1"
               placeholder="Enter total count..."
               class="input w-full"
-            >
+            />
           </div>
-          
+
           <div>
             <label class="block text-sm font-medium mb-2">Page Size</label>
-            <input 
-              type="number" 
-              [(ngModel)]="pageSize" 
-              min="1" 
+            <input
+              type="number"
+              [(ngModel)]="pageSize"
+              min="1"
               placeholder="Enter page size..."
               class="input w-full"
-            >
+            />
           </div>
         </div>
-        
+
         <div class="mt-4 flex flex-wrap gap-2">
-          <button 
-            (click)="goToFirstPage()"
-            class="btn btn-secondary"
-          >
+          <button (click)="goToFirstPage()" class="btn btn-secondary">
             Go to First Page
           </button>
-          <button 
-            (click)="goToLastPage()"
-            class="btn btn-primary"
-          >
+          <button (click)="goToLastPage()" class="btn btn-primary">
             Go to Last Page
           </button>
-          <button 
-            (click)="resetAll()"
-            class="btn btn-error"
-          >
-            Reset All
-          </button>
+          <button (click)="resetAll()" class="btn btn-error">Reset All</button>
         </div>
       </div>
 
@@ -64,11 +55,12 @@ import { PaginationComponent } from 'ng-daisy-ui-components';
       <div class="border border-gray-200 rounded-lg p-6">
         <h3 class="text-lg font-semibold mb-4">Interactive Demo</h3>
         <div class="flex w-full justify-center items-center">
-          <app-pagination 
-            [count]="count" 
-            [page]="currentPage" 
-            [pageSize]="pageSize" 
-            (pageChange)="handlePageChange($event)">
+          <app-pagination
+            [count]="count"
+            [page]="currentPage"
+            [pageSize]="pageSize"
+            (pageChange)="handlePageChange($event)"
+          >
           </app-pagination>
         </div>
       </div>
@@ -81,12 +73,15 @@ import { PaginationComponent } from 'ng-daisy-ui-components';
           <p><strong>Page Size:</strong> {{ pageSize }}</p>
           <p><strong>Current Page:</strong> {{ currentPage }}</p>
           <p><strong>Total Pages:</strong> {{ getTotalPages() }}</p>
-          <p><strong>Items Range:</strong> {{ getStartItem() }} - {{ getEndItem() }}</p>
+          <p>
+            <strong>Items Range:</strong> {{ getStartItem() }} -
+            {{ getEndItem() }}
+          </p>
         </div>
       </div>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class PaginationDemoComponent {
   currentPage = 1;
@@ -123,4 +118,4 @@ export class PaginationDemoComponent {
     const endItem = this.currentPage * this.pageSize;
     return Math.min(endItem, this.count);
   }
-} 
+}

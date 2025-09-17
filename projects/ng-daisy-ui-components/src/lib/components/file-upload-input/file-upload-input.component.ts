@@ -28,7 +28,7 @@ export class FileUploadInputComponent {
   error = false;
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
-    private toastService: ToastService,
+    private toastService: ToastService
   ) {}
 
   // onDrop(event: DndDropEvent) {

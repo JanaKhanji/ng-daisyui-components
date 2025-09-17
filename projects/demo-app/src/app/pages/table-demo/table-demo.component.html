@@ -1,9 +1,11 @@
 <div class="container mx-auto p-8">
   <h1 class="text-4xl font-bold mb-8 text-center">Table Component Demo</h1>
-  
+
   <div class="mb-8">
-    <p class="text-gray-600 mb-6">This table demonstrates sorting, pagination, and row click functionality.</p>
-    
+    <p class="text-gray-600 mb-6">
+      This table demonstrates sorting, pagination, and row click functionality.
+    </p>
+
     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
       <ng-table
         [columns]="columns"
@@ -13,8 +15,9 @@
         [pageSize]="pageSize"
         (sortChange)="onSortChange($event)"
         (rowClick)="onRowClick($event)"
-        (pageChange)="onPageChange($event)">
+        (pageChange)="onPageChange($event)"
+      >
       </ng-table>
     </div>
   </div>
-</div> 
+</div>
