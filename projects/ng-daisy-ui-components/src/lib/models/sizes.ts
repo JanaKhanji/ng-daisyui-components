@@ -1,0 +1,15 @@
+export enum Size {
+  XS = 'w-xs',
+  SM = 'w-sm',
+  MD = 'w-md',
+  LG = 'w-lg',
+  XL = 'w-xl',
+  TWO_XL = 'w-2xl',
+  THREE_XL = 'w-3xl',
+  FOUR_XL = 'w-4xl',
+  FIVE_XL = 'w-5xl',
+  SIX_XL = 'w-6xl',
+  SEVEN_XL = 'w-7xl',
+  FULL = 'w-full',
+  PROSE = 'w-prose',
+}

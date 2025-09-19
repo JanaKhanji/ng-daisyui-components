@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalExampleComponent } from './modal-example.component';
 import { ModalScrollableExampleComponent } from './modal-scrollable-example.component';
-import { ModalService, ToastService, ModalSize } from 'ng-daisy-ui-components';
+import { ModalService, ToastService, Size } from 'ng-daisy-ui-components';
 import { ModalResultsComponent } from './modal-results.component';
 
 @Component({
@@ -75,7 +75,10 @@ export class ModalDemoComponent {
   ) {}
 
   openModalExample(): void {
-    const modalRef = this.modalService.open(ModalExampleComponent, {
+    const modalRef = this.modalService.open<
+      { title: string; body: string },
+      boolean
+    >(ModalExampleComponent, {
       data: {
         title: 'Modal Example',
         body: 'This is the modal example component with custom content projection.',
@@ -84,7 +87,7 @@ export class ModalDemoComponent {
       allowCloseOnEscape: false,
     });
 
-    modalRef.afterClosed$.subscribe((result: boolean | undefined) => {
+    modalRef.afterClosed$.subscribe(result => {
       this.toastService.showSuccess(
         `Modal example closed with result: ${result}`
       );
@@ -92,14 +95,17 @@ export class ModalDemoComponent {
   }
 
   openScrollableModalExample(): void {
-    const modalRef = this.modalService.open(ModalScrollableExampleComponent, {
+    const modalRef = this.modalService.open<
+      { title: string; body: string },
+      boolean
+    >(ModalScrollableExampleComponent, {
       data: {
         title: 'Scrollable Modal Example',
         body: 'This is a scrollable modal example with lots of content to demonstrate scrolling behavior.',
       },
     });
 
-    modalRef.afterClosed$.subscribe((result: boolean | undefined) => {
+    modalRef.afterClosed$.subscribe(result => {
       this.toastService.showSuccess(
         `Scrollable modal example closed with result: ${result}`
       );
@@ -107,31 +113,35 @@ export class ModalDemoComponent {
   }
 
   openModalResultsExample(): void {
-    const modalRef = this.modalService.open(ModalResultsComponent, {
+    const modalRef = this.modalService.open<
+      { title: string; body: string },
+      { message: string }
+    >(ModalResultsComponent, {
       data: {
         title: 'Modal Results Example',
         body: 'This is the modal results example component with custom content projection.',
       },
     });
 
-    modalRef.afterClosed$.subscribe(
-      (result: { message: string } | undefined) => {
-        this.toastService.showSuccess(
-          `Modal results example closed with message: ${result?.message}`
-        );
-      }
-    );
+    modalRef.afterClosed$.subscribe(result => {
+      this.toastService.showSuccess(
+        `Modal results example closed with message: ${result.message}`
+      );
+    });
   }
 
   openCustomConfigurationModalExample(): void {
-    this.modalService.open(ModalExampleComponent, {
-      data: {
-        title: 'Custom Configuration Modal Example',
-        body: 'This is the custom configuration modal example component with custom content projection.',
-      },
-      allowCloseOnBackdropClick: true,
-      allowCloseOnEscape: true,
-      modalSize: ModalSize.SEVEN_XL,
-    });
+    this.modalService.open<{ title: string; body: string }, boolean>(
+      ModalExampleComponent,
+      {
+        data: {
+          title: 'Custom Configuration Modal Example',
+          body: 'This is the custom configuration modal example component with custom content projection. size SevenXL',
+        },
+        allowCloseOnBackdropClick: true,
+        allowCloseOnEscape: true,
+        modalSize: Size.SEVEN_XL,
+      }
+    );
   }
 }

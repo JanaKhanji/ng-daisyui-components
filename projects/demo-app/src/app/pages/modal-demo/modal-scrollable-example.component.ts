@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ModalComponent, ModalRef } from 'ng-daisy-ui-components';
+import {
+  ModalComponent,
+  ModalRef,
+  ModalComponentInterface,
+} from 'ng-daisy-ui-components';
 
 @Component({
   selector: 'app-modal-scrollable-example',
@@ -26,7 +30,9 @@ import { ModalComponent, ModalRef } from 'ng-daisy-ui-components';
     </ng-modal>
   `,
 })
-export class ModalScrollableExampleComponent {
+export class ModalScrollableExampleComponent
+  implements ModalComponentInterface<{ title: string; body: string }, boolean>
+{
   ref: ModalRef<{ title: string; body: string }, boolean> = inject(ModalRef);
   trackByIndex(index: number): number {
     return index;

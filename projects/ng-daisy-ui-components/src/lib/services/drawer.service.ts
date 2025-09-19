@@ -1,8 +1,9 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Size } from '../models/sizes';
 
 export interface GlobalDrawerConfig {
-  drawerWidth?: string;
+  drawerWidth?: Size;
   allowBackdropClick?: boolean;
   allowCloseOnEscape?: boolean;
   drawerSide?: 'end' | 'start';
@@ -18,7 +19,7 @@ export const GLOBAL_DRAWER_CONFIG = new InjectionToken<GlobalDrawerConfig>(
 })
 export class DrawerService {
   private displayDrawerSubject = new Subject<boolean>();
-  private drawerWidth: string = 'w-11/12';
+  private drawerWidth: Size = Size.LG;
   private allowBackdropClick: boolean = true;
   private allowCloseOnEscape: boolean = true;
   private drawerSide: 'end' | 'start' = 'end';
@@ -27,14 +28,14 @@ export class DrawerService {
   constructor(
     @Inject(GLOBAL_DRAWER_CONFIG)
     private config: GlobalDrawerConfig = {
-      drawerWidth: 'w-9/12',
+      drawerWidth: Size.LG,
       allowBackdropClick: true,
       allowCloseOnEscape: true,
       drawerSide: 'end',
       hideCloseButton: false,
     }
   ) {
-    this.drawerWidth = this.config.drawerWidth || 'w-9/12';
+    this.drawerWidth = this.config.drawerWidth || Size.LG;
     this.allowBackdropClick = this.config.allowBackdropClick || true;
     this.allowCloseOnEscape = this.config.allowCloseOnEscape || true;
     this.drawerSide = this.config.drawerSide || 'end';
@@ -71,11 +72,11 @@ export class DrawerService {
     return this.displayDrawerSubject;
   }
 
-  setDrawerWidth(width: string) {
+  setDrawerWidth(width: Size) {
     this.drawerWidth = width;
   }
 
-  getDrawerWidth(): string {
+  getDrawerWidth(): Size {
     return this.drawerWidth;
   }
 

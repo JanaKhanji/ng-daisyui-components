@@ -9,12 +9,17 @@ import {
   Type,
   createComponent,
 } from '@angular/core';
-import { ModalRef, ModalConfig, ModalSize } from '../models/modal-ref';
+import {
+  ModalRef,
+  ModalConfig,
+  ModalComponentInterface,
+} from '../models/modal-ref';
+import { Size } from '../models/sizes';
 
 export interface GlobalModalConfig {
   allowCloseOnBackdropClick?: boolean;
   allowCloseOnEscape?: boolean;
-  modalSize?: ModalSize;
+  modalSize?: Size;
 }
 
 export const GLOBAL_MODAL_CONFIG = new InjectionToken<GlobalModalConfig>(
@@ -26,7 +31,7 @@ export class ModalService {
   ref: ModalRef<unknown, unknown> | null = null;
   private allowCloseOnBackdropClick: boolean = true;
   private allowCloseOnEscape: boolean = true;
-  private modalSize: ModalSize = ModalSize.MD;
+  private modalSize: Size = Size.MD;
 
   constructor(
     private appRef: ApplicationRef,
@@ -35,19 +40,19 @@ export class ModalService {
     private globalConfig: GlobalModalConfig = {
       allowCloseOnBackdropClick: true,
       allowCloseOnEscape: true,
-      modalSize: ModalSize.LG,
+      modalSize: Size.LG,
     }
   ) {
     this.allowCloseOnBackdropClick =
       this.globalConfig.allowCloseOnBackdropClick ?? true;
     this.allowCloseOnEscape = this.globalConfig.allowCloseOnEscape ?? true;
-    this.modalSize = this.globalConfig.modalSize ?? ModalSize.LG;
+    this.modalSize = this.globalConfig.modalSize ?? Size.LG;
   }
 
   open<TData = unknown, TResult = unknown>(
-    component: Type<unknown>,
+    component: Type<ModalComponentInterface<TData, TResult>>,
     config: ModalConfig<TData>
-  ): ModalRef<TData, TResult | boolean> {
+  ): ModalRef<TData, TResult> {
     // Merge global config with provided config
     const mergedConfig: ModalConfig<TData> = {
       ...config,
@@ -57,10 +62,9 @@ export class ModalService {
       modalSize: config.modalSize ?? this.modalSize,
     };
 
-    const modalRef = new ModalRef<TData, TResult | boolean>(
-      config.data,
-      mergedConfig
-    );
+    const modalRef = new ModalRef<TData, TResult>(config.data, mergedConfig);
+    this.ref = modalRef as unknown as ModalRef<unknown, unknown>;
+
     // create injector providing ModalRef
     const injector = Injector.create({
       providers: [{ provide: ModalRef, useValue: modalRef }],
@@ -83,7 +87,7 @@ export class ModalService {
     if (mergedConfig.allowCloseOnEscape !== false) {
       const onKeyDown = (event: KeyboardEvent) => {
         if (event.key === 'Escape') {
-          modalRef.close(false);
+          modalRef.close(false as TResult);
         }
       };
       document.addEventListener('keydown', onKeyDown);
@@ -98,7 +102,6 @@ export class ModalService {
       this.appRef.detachView(compRef.hostView);
       compRef.destroy();
     });
-    this.ref = modalRef as unknown as ModalRef<unknown, unknown>;
     return modalRef;
   }
 
@@ -108,7 +111,7 @@ export class ModalService {
     }
   }
 
-  getModalSize(): ModalSize {
+  getModalSize(): Size {
     return this.ref?.config.modalSize ?? this.modalSize;
   }
 }

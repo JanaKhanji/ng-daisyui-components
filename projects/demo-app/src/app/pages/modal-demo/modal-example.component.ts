@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ModalRef } from 'ng-daisy-ui-components';
-import { ModalComponent } from 'ng-daisy-ui-components';
+import {
+  ModalRef,
+  ModalComponentInterface,
+  ModalComponent,
+} from 'ng-daisy-ui-components';
 
 @Component({
   selector: 'app-modal-example',
@@ -28,6 +31,8 @@ import { ModalComponent } from 'ng-daisy-ui-components';
     </ng-modal>
   `,
 })
-export class ModalExampleComponent {
+export class ModalExampleComponent
+  implements ModalComponentInterface<{ title: string; body: string }, boolean>
+{
   ref: ModalRef<{ title: string; body: string }, boolean> = inject(ModalRef);
 }

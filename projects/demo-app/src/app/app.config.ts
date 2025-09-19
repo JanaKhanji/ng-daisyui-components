@@ -8,9 +8,9 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { ThemeService } from './service/theme.service';
 import {
-  GlobalDrawerConfig,
-  GlobalModalConfig,
-  ModalSize,
+  GLOBAL_DRAWER_CONFIG,
+  GLOBAL_MODAL_CONFIG,
+  Size,
 } from 'ng-daisy-ui-components';
 
 export const appConfig: ApplicationConfig = {
@@ -24,21 +24,21 @@ export const appConfig: ApplicationConfig = {
       deps: [ThemeService],
     },
     {
-      provide: GlobalDrawerConfig,
+      provide: GLOBAL_DRAWER_CONFIG,
       useValue: {
-        drawerWidth: 'w-9/12',
+        drawerWidth: Size.TWO_XL,
         allowBackdropClick: true,
-        allowCloseOnEscape: false,
+        allowCloseOnEscape: true,
         drawerSide: 'end',
         hideCloseButton: false,
       },
     },
     {
-      provide: GlobalModalConfig,
+      provide: GLOBAL_MODAL_CONFIG,
       useValue: {
         allowCloseOnBackdropClick: false,
         allowCloseOnEscape: false,
-        modalSize: ModalSize.LG,
+        modalSize: Size.LG,
       },
     },
   ],

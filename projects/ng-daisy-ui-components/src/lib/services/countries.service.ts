@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CountriesService {
+  private excludeCountries: string[] = [];
   private countries = new Map<string, string>([
     ['AF', 'Afghanistan'],
     ['AL', 'Albania'],
@@ -212,10 +213,18 @@ export class CountriesService {
   constructor() {}
 
   getCountries(): Map<string, string> {
-    return this.countries;
+    return new Map(
+      [...this.countries].filter(
+        ([code]) => !this.excludeCountries.includes(code)
+      )
+    );
   }
 
   getCountyNameByCode(code: string): string {
     return this.countries.get(code) || '';
+  }
+
+  addExcludeCountries(codes: string[]): void {
+    this.excludeCountries.push(...codes);
   }
 }

@@ -20,7 +20,6 @@ export * from './lib/components/drawer-layout/drawer-layout.component';
 export * from './lib/components/modal/modal.component';
 export * from './lib/services/modal.service';
 export * from './lib/models/modal-ref';
-
 // Pagination component
 export * from './lib/components/pagination/pagination.component';
 
@@ -41,6 +40,7 @@ export * from './lib/services/drawer.service';
 
 // Main lib models
 export * from './lib/models/order-by-direction.enum';
+export * from './lib/models/sizes';
 export * from './lib/models/file-item';
 export * from './lib/models/autocomplete-details';
 

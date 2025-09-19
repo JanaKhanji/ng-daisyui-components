@@ -34,9 +34,7 @@ import {
         ></label>
 
         <div
-          class="flex h-full {{
-            currentConfig.drawerWidth
-          }} overflow-hidden justify-end"
+          class="flex h-full w-full overflow-hidden justify-end"
           [ngClass]="
             currentConfig.drawerSide === 'end' ? 'flex-row' : 'flex-row-reverse'
           "
